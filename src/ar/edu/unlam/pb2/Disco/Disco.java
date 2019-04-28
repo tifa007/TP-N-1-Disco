@@ -4,14 +4,14 @@ public class Disco {
 	
 	private Float radioInterior;
 	private Float radioExterior;
-	private Float perimetroInterior;
-	private Float perimetroExterior;
-	private Float superficie;
 	
 	public Disco(Float radioInterior, Float radioExterior){
 		this.radioInterior = radioInterior;
 		this.radioExterior = radioExterior;
-		
+	}
+
+	public Disco() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Float getRadioInterior() {
@@ -19,6 +19,7 @@ public class Disco {
 	}
 
 	public void setRadioInterior(Float radioInterior) {
+		if(radioInterior>= 0)
 		this.radioInterior = radioInterior;
 	}
 
@@ -27,62 +28,28 @@ public class Disco {
 	}
 
 	public void setRadioExterior(Float radioExterior) {
+		if(radioExterior>0)
 		this.radioExterior = radioExterior;
-	}
-
-	public Float getPerimetroInterior() {
-		return perimetroInterior;
-	}
-
-	public void setPerimetroInterior(Float perimetroInterior) {
-		this.perimetroInterior = perimetroInterior;
-	}
-
-	public Float getPerimetroExterior() {
-		return perimetroExterior;
-	}
-
-	public void setPerimetroExterior(Float perimetroExterior) {
-		this.perimetroExterior = perimetroExterior;
-	}
-
-	public Float getSuperficie() {
-		return superficie;
-	}
-
-	public void setSuperficie(Float superficie) {
-		this.superficie = superficie;
+		//deberia ser siempre mayor que el radio interior sino no no seria un disco(?)
 	}
 	
 	
-	 public Float calculoDelPerimetroInterior() {
-		 Float Resultado;
-    	
-    	perimetroInterior=(float)(2*Math.PI*radioInterior);
-    	Resultado=perimetroInterior;
+	 public Float calculoDelPerimetroInterior(Float radioInt) {
+		Float Resultado;
+    	Resultado=(float)(2*Math.PI*radioInt);
 		return Resultado;
 	}
 	 
-	 public Float calculoDelPerimetroExterior() {
-		 Float Resultado;
-    
-    	perimetroExterior=(float)(2*Math.PI*radioExterior);
-    	Resultado=perimetroExterior;
+	 public Float calculoDelPerimetroExterior(Float radioExt) {
+		Float Resultado;
+    	Resultado=(float)(2*Math.PI*radioExt);
 		return Resultado;
 	}
 	 
-    public Float calculoDeSuperficieDelDisco() {
-    	Float Resultado;
-    	Float SuperficieInterior;
-    	Float SuperficieExterior;
-    
-    	SuperficieInterior= (float)(Math.PI* Math.pow(radioInterior,2));
-    	SuperficieExterior= (float)(Math.PI* Math.pow(radioExterior,2));
-    	superficie=SuperficieExterior-SuperficieInterior;
-    	
-    	Resultado =superficie;		
-		return Resultado;
+    public Float calculoDeSuperficieDelDisco(Float radioInt, Float radioExt) {
+    	Float superficieInterior= (float)(Math.PI* Math.pow(radioInterior,2));
+    	Float superficieExterior= (float)(Math.PI* Math.pow(radioExterior,2));
+    	return superficieExterior-superficieInterior;
 		
 	}
-    
 }
